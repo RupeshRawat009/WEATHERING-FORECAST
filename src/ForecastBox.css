@@ -1,0 +1,24 @@
+.forecast-box {
+  padding: 20px;
+  width: 350px;
+}
+
+.forecast-section {
+  margin-bottom: 20px;
+}
+
+.forecast-section h3 {
+  margin-bottom: 10px;
+}
+
+.forecast-scroll {
+  display: flex;
+  overflow-x: auto;
+  gap: 15px;
+  padding-bottom: 10px;
+}
+
+.forecast-item {
+  text-align: center;
+  min-width: 60px;
+}
