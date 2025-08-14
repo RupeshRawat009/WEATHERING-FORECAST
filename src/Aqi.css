@@ -1,0 +1,35 @@
+.aqi-box {
+  padding: 10px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+.aqi-text {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.aqi-good {
+  color: #2ecc71; /* Green */
+}
+
+.aqi-fair {
+  color: #27ae60; /* Darker Green */
+}
+
+.aqi-moderate {
+  color: #f1c40f; /* Yellow */
+}
+
+.aqi-poor {
+  color: #e67e22; /* Orange */
+}
+
+.aqi-verypoor {
+  color: #e74c3c; /* Red */
+}
+
+.aqi-unknown {
+  color: #bdc3c7; /* Grey */
+}
