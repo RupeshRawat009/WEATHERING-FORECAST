@@ -3,6 +3,12 @@
   font-size: 3rem;
   color: White;
 }
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevents horizontal scroll */
+}
+
 
 .weather-app {
   font-family: Arial, sans-serif;
