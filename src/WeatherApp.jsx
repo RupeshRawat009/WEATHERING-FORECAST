@@ -1,7 +1,26 @@
 import React, { useState, useEffect } from "react";
 import InfoBox from "./InfoBox";
 import ForecastBox from "./ForecastBox";
+import LeafletMap from "./LeafletMap";
+import "./LeafletMap.css";
+
+
 import "./WeatherApp.css";
+// Add this array of facts at the top of your WeatherApp.jsx (outside the component)
+const weatherFacts = [
+  "The highest temperature ever recorded was 56.7 °C in Death Valley.",
+  "Raindrops can fall at speeds up to 22 mph (about 35 km/h).",
+  "Lightning heats the air around it to over 30,000 °C—five times hotter than the surface of the sun!",
+  "A single cumulus cloud can weigh over 1 million pounds.",
+  "The coldest temperature ever recorded on Earth was −89.2 °C in Antarctica.",
+  "Hailstones the size of softballs have been recorded in the US.",
+  "Fog is basically a cloud that touches the ground.",
+  "The Sahara Desert can be colder at night than many European cities.",
+];
+
+// Inside your component (WeatherApp)
+const randomFact =
+  weatherFacts[Math.floor(Math.random() * weatherFacts.length)];
 
 export default function WeatherApp() {
   const [city, setCity] = useState("");
@@ -120,6 +139,13 @@ export default function WeatherApp() {
     <div className={`weather-app ${getBackgroundClass()}`}>
       <div className="weather-particles"></div>
 
+      {/* ✅ Hero Section */}
+      <section className="hero">
+        <h1>Your Weather, Your Way</h1>
+        <p>Get real-time weather, forecasts, and air quality updates.</p>
+      </section>
+
+      {/* ✅ Search Bar with CTA */}
       <div className="search-box">
         <input
           type="text"
@@ -127,11 +153,22 @@ export default function WeatherApp() {
           value={city}
           onChange={(e) => setCity(e.target.value)}
         />
-        <button onClick={getWeather}>Search</button>
+        <button onClick={getWeather}>🔍 Search Your City</button>
       </div>
 
+
+      {/* ✅ Feature Highlights */}
+      <div className="features">
+        <div>🌡️ Temperature</div>
+        <div>💧 Humidity</div>
+        <div>🌬️ Wind Speed</div>
+        <div>🌫️ AQI</div>
+      </div>
+
+      {/* ✅ Weather Data */}
       <div className="cards">
         <InfoBox weather={weather} />
+
         {displayAqi && (
           <div className="aqi-box">
             <h3>AQI: {displayAqi}</h3>
@@ -139,6 +176,20 @@ export default function WeatherApp() {
         )}
         <ForecastBox forecast={forecast} />
       </div>
+
+{/* ✅ Interactive Map */}
+<LeafletMap onSelectCity={(coords) => console.log("Clicked:", coords)} />      
+
+{/* ✅ Fun Fact / Quote */}
+<div className="quote">
+  <p>🌍 Did you know? {randomFact}</p>
+</div>
+
+
+      {/* ✅ Footer */}
+      <footer>
+        <p>Built by RUPESH | Powered by OpenWeather API</p>
+      </footer>
     </div>
   );
 }

@@ -1,0 +1,10 @@
+.map-container {
+  width: 80%;             /* make it smaller than full width */
+  max-width: 1000px;      /* don’t let it grow too large */
+  height: 500px;          /* fixed professional height */
+  margin: 20px auto;      /* center horizontally with spacing */
+  border-radius: 16px;    /* smooth rounded corners */
+  overflow: hidden;       /* clip map edges to the radius */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* subtle shadow */
+  border: 2px solid #e0e0e0; /* light border for neat look */
+}
