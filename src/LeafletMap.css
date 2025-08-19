@@ -12,7 +12,8 @@
   .map-container {
     width: 90vw;
     height: 300px;
-    margin: 10px auto;
+    position: relative;
+    right: 10px;
     border-radius: 10px;
   }
 }
