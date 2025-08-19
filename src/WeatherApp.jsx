@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import InfoBox from "./InfoBox";
 import ForecastBox from "./ForecastBox";
 import LeafletMap from "./LeafletMap";
-import "./LeafletMap.css";
+
 
 
 import "./WeatherApp.css";
