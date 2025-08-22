@@ -202,6 +202,11 @@ export default function WeatherApp() {
         <ForecastBox forecast={forecast} />
       </div>
 
+<div className="map-section">
+  <h2 className="map-heading">🌍 Explore the Climate</h2>
+  
+</div>
+
       {/* ✅ Interactive Map */}
       <LeafletMap onSelectCity={(coords) => console.log("Clicked:", coords)} />
 

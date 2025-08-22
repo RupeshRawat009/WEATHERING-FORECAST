@@ -2,6 +2,7 @@
 .hero{
   font-size: 3rem;
   color: White;
+  font-family: 'VT323', monospace;
 }
 body {
   margin: 0;
@@ -11,7 +12,7 @@ body {
 
 
 .weather-app {
-  font-family: Arial, sans-serif;
+font-family: 'VT323', monospace;
   text-align: center;
   padding: 30px;
   min-height: 100vh;
@@ -107,9 +108,11 @@ body {
   border-radius: 8px;
     color: #555;
   border: 1px solid #ccc;
+  font-family: 'VT323', monospace;
 }
 
 .search-box button {
+  font-family: 'VT323', monospace;
   flex-shrink: 0; /* prevent button from shrinking */
   padding: 10px 14px;
   border: none;
@@ -146,7 +149,7 @@ body {
   gap: 10px;
   font-size: 32px;
   margin: 50px;
-  font-family:'Times New Roman', Times, serif;
+font-family: 'VT323', monospace;
   color: #ffffff;
   
 }
@@ -238,6 +241,49 @@ body {
   max-width: 900px;
   width: 100%;
 }
+
+.map-heading {
+  text-align: center;
+  font-size: 2rem; /* slightly bigger */
+  font-weight: 700;
+color: white;
+ font-family: 'VT323', monospace;
+  margin-bottom: 20px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+ 
+}
+
+
+
+.map-heading {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: yellow;
+  background: rgba(183, 175, 175, 0.699);
+  border: 2px solid white;
+  border-radius: 10px;
+  /* Reduced horizontal padding to make the box narrower */
+  padding: 10px 15px; 
+  /* Sets a maximum width for the box */
+  max-width: 500px;
+  margin: 0 auto 20px auto; /* Centers the box and adds bottom margin */
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+@media (max-width: 600px) {
+  .map-heading {
+    /* Adjust font size to prevent text from wrapping */
+    font-size: 1.2rem; 
+    /* Reduce padding to create a more compact box */
+    padding: 8px 10px;
+    /* Reduce letter-spacing to make the text fit better */
+    letter-spacing: 1px;
+  }
+}
+
 
 .aqi-box {
   background: linear-gradient(135deg, #ff9a9e, #fad0c4);
