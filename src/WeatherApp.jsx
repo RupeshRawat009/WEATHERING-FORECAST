@@ -3,8 +3,6 @@ import InfoBox from "./InfoBox";
 import ForecastBox from "./ForecastBox";
 import LeafletMap from "./LeafletMap";
 
-
-
 import "./WeatherApp.css";
 // Add this array of facts at the top of your WeatherApp.jsx (outside the component)
 const weatherFacts = [
@@ -27,6 +25,7 @@ export default function WeatherApp() {
   const [weather, setWeather] = useState(null);
   const [forecast, setForecast] = useState(null);
   const [aqiData, setAqiData] = useState(null);
+  const [error, setError] = useState(""); // ✅ added: hold "city not found" or other errors
 
   const API_KEY = import.meta.env.VITE_OPENWEATHER_API_KEY;
 
@@ -71,6 +70,15 @@ export default function WeatherApp() {
       );
       const weatherData = await weatherRes.json();
 
+      // ✅ handle wrong city (prevents white screen)
+      if (weatherData.cod !== 200) {
+        setError("City not found. Please try again.");
+        setWeather(null);
+        setForecast(null);
+        setAqiData(null);
+        return ;
+      }
+
       // ✅ Forecast
       const forecastRes = await fetch(
         `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=metric`
@@ -88,8 +96,10 @@ export default function WeatherApp() {
 
       setWeather(weatherData);
       setForecast(forecastData);
+      setError(""); // ✅ clear any previous error
     } catch (err) {
       console.error("Error fetching weather:", err);
+      setError("Something went wrong. Please try again.");
     }
   };
 
@@ -98,7 +108,7 @@ export default function WeatherApp() {
     const container = document.querySelector(".weather-particles");
     if (!container) return;
     container.innerHTML = "";
-    if (!weather) return;
+    if (!weather || !weather.weather) return; // ✅ guard to prevent crash
 
     const condition = weather.weather[0].main.toLowerCase();
     const isRain = condition.includes("rain") || condition.includes("drizzle");
@@ -118,7 +128,7 @@ export default function WeatherApp() {
   }, [weather]);
 
   const getBackgroundClass = () => {
-    if (!weather) return "default-bg";
+    if (!weather || !weather.weather) return "default-bg"; // ✅ guard to prevent crash
     const condition = weather.weather[0].main.toLowerCase();
     if (condition.includes("clear")) return "clear-bg";
     if (condition.includes("cloud")) return "cloudy-bg";
@@ -156,6 +166,13 @@ export default function WeatherApp() {
         <button onClick={getWeather}>🔍 Search Your City</button>
       </div>
 
+      {/* ❌ Error Message */}
+      {error && (
+        <p style={{ color: "white", fontWeight: "bold", marginTop: "10px" }}>
+          {error}
+        </p>
+      )}
+     
 
       {/* ✅ Feature Highlights */}
       <div className="features">
@@ -168,7 +185,6 @@ export default function WeatherApp() {
       {/* ✅ Weather Data */}
       <div className="cards">
         <InfoBox weather={weather} />
-
         {displayAqi && (
           <div className="aqi-box">
             <h3>AQI: {displayAqi}</h3>
@@ -177,14 +193,13 @@ export default function WeatherApp() {
         <ForecastBox forecast={forecast} />
       </div>
 
-{/* ✅ Interactive Map */}
-<LeafletMap onSelectCity={(coords) => console.log("Clicked:", coords)} />      
+      {/* ✅ Interactive Map */}
+      <LeafletMap onSelectCity={(coords) => console.log("Clicked:", coords)} />
 
-{/* ✅ Fun Fact / Quote */}
-<div className="quote">
-  <p>🌍 Did you know? {randomFact}</p>
-</div>
-
+      {/* ✅ Fun Fact / Quote */}
+      <div className="quote">
+        <p>🌍 Did you know? {randomFact}</p>
+      </div>
 
       {/* ✅ Footer */}
       <footer>

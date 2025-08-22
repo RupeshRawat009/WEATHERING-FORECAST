@@ -14,8 +14,12 @@ export default function SearchBox({ updateInfo }) {
       const response = await fetch(
         `${API_URL}?q=${city}&appid=${API_KEY}&units=metric`
       );
-      if (!response.ok) throw new Error("City not found");
       const jsonResponse = await response.json();
+
+      // ✅ Check if API says error
+      if (jsonResponse.cod !== 200) {
+        throw new Error("City not found");
+      }
 
       return {
         city: city,
@@ -63,6 +67,7 @@ export default function SearchBox({ updateInfo }) {
           {loading ? "Loading..." : "Search"}
         </button>
       </form>
+      {/* ✅ This will now work without crashing */}
       {error && <p className="error-text">{error}</p>}
     </div>
   );
