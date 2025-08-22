@@ -110,7 +110,8 @@ body {
 }
 
 .search-box button {
-  padding: 8px 14px;
+  flex-shrink: 0; /* prevent button from shrinking */
+  padding: 10px 14px;
   border: none;
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.2);
@@ -118,7 +119,21 @@ body {
   color: white;
   font-weight: bold;
   cursor: pointer;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, background 0.3s;
+  white-space: nowrap; /* keeps text in one line */
+}
+
+/* Small screen adjustments */
+@media (max-width: 400px) {
+  .search-box {
+    flex-direction: column; /* stack input and button */
+    gap: 10px;
+  }
+
+  .search-box input,
+  .search-box button {
+    width: 100%;
+  }
 }
 
 .search-box button:hover {
