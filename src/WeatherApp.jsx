@@ -28,7 +28,7 @@ export default function WeatherApp() {
   const [forecast, setForecast] = useState(null);
   const [aqiData, setAqiData] = useState(null);
 
-  const API_KEY = "541da9eb225166b532face0581dbdd2d";
+  const API_KEY = import.meta.env.VITE_OPENWEATHER_API_KEY;
 
   // ✅ AQI calculation from PM2.5
   function calculateAQI(pm25) {
