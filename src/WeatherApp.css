@@ -101,9 +101,11 @@ body {
 }
 
 .search-box input {
+   background: rgba(255, 255, 255, 0.85);
   padding: 8px;
-  width: 250px;
+  width: 350px;
   border-radius: 8px;
+    color: #555;
   border: 1px solid #ccc;
 }
 
@@ -131,6 +133,13 @@ body {
   margin: 50px;
   font-family:'Times New Roman', Times, serif;
   color: #ffffff;
+  cursor: pointer;
+}
+
+.card-feat:hover{
+   background: #007bff;
+  color: white;
+  transform: translateY(-2px);
 }
 
 /* Cards */
@@ -142,16 +151,18 @@ body {
 }
 
 .card {
-background: #76ABDF;
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 4px 20px rgba(200, 52, 52, 0.1);
-  width: 300px;
+  background: #ffffffcc; /* semi-transparent */
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  text-align: center;
+  margin: 10px;
+  flex: 1;
   transition: transform 0.3s ease;
 }
 
 .card:hover {
-  transform: translateY(-5px);
+ transform: scale(1.05);
 }
 
 .forecast-card {
@@ -182,7 +193,7 @@ background: #76ABDF;
   left: 0; /* Remove hard offset */
 }
 
-.features div {
+.features div  {
   position: static; /* Remove right offset */
   width: 100%;
   max-width: 150px;

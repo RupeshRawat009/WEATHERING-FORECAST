@@ -72,7 +72,7 @@ export default function WeatherApp() {
 
       // ✅ handle wrong city (prevents white screen)
       if (weatherData.cod !== 200) {
-        setError("City not found. Please try again.");
+        setError("⚠️ City not found. Please try again.");
         setWeather(null);
         setForecast(null);
         setAqiData(null);
@@ -159,7 +159,7 @@ export default function WeatherApp() {
       <div className="search-box">
         <input
           type="text"
-          placeholder="Enter city..."
+          placeholder="🌤️ Start by typing a city above to see the weather forecast"
           value={city}
           onChange={(e) => setCity(e.target.value)}
         />
@@ -167,19 +167,28 @@ export default function WeatherApp() {
       </div>
 
       {/* ❌ Error Message */}
-      {error && (
-        <p style={{ color: "white", fontWeight: "bold", marginTop: "10px" }}>
-          {error}
-        </p>
-      )}
+     {error && (
+  <p style={{ 
+    backgroundColor: '#e7e1e1ff', 
+    color: '#000000ff',
+    border: '1px solid #d43f3a',
+    padding: '10px 15px',
+    marginTop: '10px',
+    borderRadius: '6px',
+    fontWeight: '500',
+    textAlign: 'center'
+  }}>
+    {error}
+  </p>
+)}
      
 
       {/* ✅ Feature Highlights */}
       <div className="features">
-        <div>🌡️ Temperature</div>
-        <div>💧 Humidity</div>
-        <div>🌬️ Wind Speed</div>
-        <div>🌫️ AQI</div>
+        <div className="card-feat">🌡️ Temperature</div>
+        <div className="card-feat">💧 Humidity</div>
+        <div className="card-feat">🌬️ Wind Speed</div>
+        <div className="card-feat">🌫️ AQI</div>
       </div>
 
       {/* ✅ Weather Data */}
